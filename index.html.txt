@@ -1,0 +1,115 @@
+index.html
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChocoCraft - কাস্টমাইজড চকোলেট</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fdf6f0;
+            color: #4a2c11;
+        }
+        header {
+            background-color: #4a2c11;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1511381939415-e44015466834?q=80&w=1200') no-repeat center center/cover;
+            color: white;
+        }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h2 { text-align: center; color: #6d421e; }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .btn-submit {
+            background-color: #6d421e;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .btn-submit:hover {
+            background-color: #4a2c11;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ChocoCraft</h1>
+        <p>আপনার পছন্দের মানুষকে দিন নিজের মতো সাজানো চকোলেট উপহার</p>
+    </header>
+
+    <section class="hero">
+        <h1>মিষ্টি মুহূর্তগুলো হোক আরও স্পেশাল</h1>
+        <p>আপনার নাম, মেসেজ এবং পছন্দের ফ্লেভারে তৈরি প্রিমিয়াম চকোলেট</p>
+    </section>
+
+    <div class="container">
+        <h2> আপনার চকোলেট কাস্টমাইজ করুন</h2>
+        <form>
+            <div class="form-group">
+                <label for="name">আপনার নাম:</label>
+                <input type="text" id="name" placeholder="আপনার নাম লিখুন" required>
+            </div>
+
+            <div class="form-group">
+                <label for="flavor">চকোলেট ফ্লেভার বেছে নিন:</label>
+                <select id="flavor">
+                    <option>ডার্ক চকোলেট (Dark Chocolate)</option>
+                    <option>মিল্ক চকোলেট (Milk Chocolate)</option>
+                    <option>হোয়াইট চকোলেট (White Chocolate)</option>
+                    <option>মিক্সড বক্স (Mixed Box)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="msg">চকোলেটের ওপর কী লেখা থাকবে? (যেমন: Happy Birthday Riya):</label>
+                <input type="text" id="msg" placeholder="আপনার মেসেজটি লিখুন" required>
+            </div>
+
+            <div class="form-group">
+                <label for="details">অন্য কোনো বিশেষ অনুরোধ (যেমন: প্যাকিং বা এক্সট্রা বাদাম):</label>
+                <textarea id="details" rows="3" placeholder="এখানে লিখুন..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">অর্ডার প্লেস করুন</button>
+        </form>
+    </div>
+
+</body>
+</html>
+
