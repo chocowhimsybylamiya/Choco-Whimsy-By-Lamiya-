@@ -376,7 +376,71 @@ Choco Whimsy By Lamiya
 © 2026 Choco Whimsy By Lamiya
 
 </footer>
+<script>
 
+function calculateTotal(){
+
+let product = document.getElementById("product").value;
+let quantity = document.getElementById("quantity").value;
+let delivery = document.getElementById("delivery").value;
+
+
+let price = 0;
+
+
+if(product.includes("Mini Heart")){
+    price = 10;
+}
+
+else if(product.includes("Mini Rectangular")){
+    price = 10;
+}
+
+else if(product.includes("Tablet")){
+    price = 40;
+}
+
+else if(product.includes("Cakesicle")){
+    price = 60;
+}
+
+else if(product.includes("Customized")){
+    price = 250;
+}
+
+
+
+let deliveryCharge = 0;
+
+
+if(delivery.includes("Inside")){
+    deliveryCharge = 50;
+}
+
+else if(delivery.includes("Outside")){
+    deliveryCharge = 100;
+}
+
+
+
+let total = (price * quantity) + deliveryCharge;
+
+
+document.getElementById("total").innerHTML =
+"Total: ৳" + total;
+
+
+}
+
+
+document.getElementById("product").addEventListener("change",calculateTotal);
+
+document.getElementById("quantity").addEventListener("input",calculateTotal);
+
+document.getElementById("delivery").addEventListener("change",calculateTotal);
+
+
+</script>
 
 
 </body>
