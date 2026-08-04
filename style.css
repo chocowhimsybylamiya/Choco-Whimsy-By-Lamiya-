@@ -277,3 +277,19 @@ nav a{
 
 }
 }
+/* Product Button */
+
+.card button{
+
+    margin-top:15px;
+
+}
+
+
+/* Card Animation */
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
