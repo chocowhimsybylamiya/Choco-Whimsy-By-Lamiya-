@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choco Whimsy By Lamiya | Handmade Chocolates</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        chocoDark: '#2C1810',
+                        chocoGold: '#D4AF37',
+                        chocoCream: '#FAF6F0',
+                        chocoCard: '#F3E5AB',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-chocoCream text-chocoDark font-sans">
+
+    <!-- Navbar -->
+    <nav class="bg-chocoDark text-chocoGold p-4 sticky top-0 z-50 shadow-lg flex justify-between items-center px-4 md:px-8">
+        <h1 class="text-lg md:text-xl font-bold">🍫 Choco Whimsy By Lamiya</h1>
+        <div class="flex items-center gap-3">
+            <a href="https://www.facebook.com/profile.php?id=61588324855620" target="_blank" class="text-white hover:text-chocoGold text-xl transition">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#order-section" class="bg-chocoGold text-chocoDark font-bold text-sm px-3 py-1.5 rounded hover:bg-white transition">Order Now</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="text-center py-10 px-4 bg-[#3E2723] text-white">
+        <h2 class="text-3xl md:text-5xl font-extrabold text-chocoGold mb-2">Premium Handmade Chocolate</h2>
+        <p class="text-sm md:text-base text-gray-200 italic mb-4">Made With Love & Hygienic Preparation</p>
+        <a href="https://www.facebook.com/profile.php?id=61588324855620" target="_blank" class="inline-block text-xs md:text-sm bg-blue-600 text-white font-semibold px-4 py-2 rounded-full hover:bg-blue-700 transition">
+            <i class="fab fa-facebook mr-1"></i> Visit Facebook Page
+        </a>
+    </header>
+
+    <!-- Why Choose Us -->
+    <section class="py-6 px-4 text-center max-w-4xl mx-auto">
+        <div class="grid grid-cols-3 gap-3">
+            <div class="p-3 bg-white rounded-lg shadow border border-chocoGold/30">
+                <i class="fas fa-heart text-xl text-chocoGold mb-1"></i>
+                <h4 class="font-bold text-xs md:text-sm">Handmade</h4>
+            </div>
+            <div class="p-3 bg-white rounded-lg shadow border border-chocoGold/30">
+                <i class="fas fa-paint-brush text-xl text-chocoGold mb-1"></i>
+                <h4 class="font-bold text-xs md:text-sm">Customized</h4>
+            </div>
+            <div class="p-3 bg-white rounded-lg shadow border border-chocoGold/30">
+                <i class="fas fa-shield-virus text-xl text-chocoGold mb-1"></i>
+                <h4 class="font-bold text-xs md:text-sm">Hygienic</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="px-4 max-w-6xl mx-auto my-4 text-center">
+        <div class="flex flex-wrap justify-center gap-2" id="category-buttons">
+            <!-- Dynamic Buttons from app.js -->
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-4 px-4 max-w-6xl mx-auto">
+        <h3 class="text-2xl font-bold text-center mb-6 border-b-2 border-chocoGold inline-block pb-1">Our Chocolate Menu</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="product-list">
+            <!-- Products injected by app.js -->
+        </div>
+    </section>
+
+    <!-- Selected Cart Summary -->
+    <div id="cart-bar" class="fixed bottom-0 left-0 right-0 bg-chocoDark text-white p-3 shadow-2xl flex justify-between items-center px-6 z-40 hidden">
+        <div>
+            <p class="text-xs text-chocoGold">Selected Item:</p>
+            <p id="cart-item-name" class="font-bold text-sm"></p>
+        </div>
+        <div class="flex items-center gap-3">
+            <p id="cart-item-price" class="text-lg font-bold text-chocoGold"></p>
+            <a href="#order-section" class="bg-chocoGold text-chocoDark font-bold px-4 py-2 rounded text-xs hover:bg-white transition">Checkout</a>
+        </div>
+    </div>
+
+    <!-- Order & Checkout Section -->
+    <section id="order-section" class="py-8 px-4 max-w-3xl mx-auto my-8 bg-white rounded-xl shadow-xl border border-chocoGold">
+        <h3 class="text-2xl font-bold text-center text-chocoDark mb-4">Complete Your Order</h3>
+        
+        <!-- Payment Alert Notice -->
+        <div class="bg-amber-100 border-l-4 border-amber-500 p-3 mb-6 text-xs md:text-sm text-amber-900 rounded">
+            <p class="font-bold">⚠️ Advance Payment Notice:</p>
+            <p>অর্ডার কনফার্ম করতে ডেলিভারি চার্জ (ঢাকার ভেতরে ৳৮০ / বাইরে ৳১৫০) বিকাশ বা নগদে সেন্ড মানি করুন। চকলেটের দাম ক্যাশ অন ডেলিভারিতে দেবেন।</p>
+            <p class="mt-2 font-bold text-chocoDark">📲 bKash/Nagad Personal: 01XXXXXXXXX</p>
+        </div>
+
+        <form id="orderForm" onsubmit="handleOrder(event)" class="space-y-4">
+            <div>
+                <label class="block font-semibold text-sm mb-1">Selected Chocolate *</label>
+                <input type="text" id="selectedProductInput" readonly required placeholder="Please select a chocolate from menu above" class="w-full p-2 border rounded bg-gray-100 font-bold text-chocoDark">
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block font-semibold text-sm mb-1">Quantity *</label>
+                    <input type="number" id="itemQty" min="1" value="1" onchange="updateTotal()" required class="w-full p-2 border rounded focus:outline-chocoGold">
+                </div>
+                <div>
+                    <label class="block font-semibold text-sm mb-1">Delivery District *</label>
+                    <select id="district" onchange="updateTotal()" class="w-full p-2 border rounded focus:outline-chocoGold text-sm">
+                        <option value="80">Inside Dhaka (৳80)</option>
+                        <option value="150">Outside Dhaka (৳150)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <label class="block font-semibold text-sm mb-1">Customer Name *</label>
+                <input type="text" id="custName" required class="w-full p-2 border rounded focus:outline-chocoGold">
+            </div>
+
+            <div>
+                <label class="block font-semibold text-sm mb-1">Phone Number *</label>
+                <input type="tel" id="custPhone" required class="w-full p-2 border rounded focus:outline-chocoGold">
+            </div>
+
+            <div>
+                <label class="block font-semibold text-sm mb-1">Full Delivery Address *</label>
+                <textarea id="custAddress" required class="w-full p-2 border rounded focus:outline-chocoGold" rows="2"></textarea>
+            </div>
+
+            <!-- Customization Form -->
+            <div class="border-t pt-3">
+                <h4 class="font-bold text-chocoGold text-sm mb-2">🎀 Customization Options</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold mb-1">Occasion</label>
+                        <select id="occasion" class="w-full p-2 border rounded text-sm">
+                            <option value="None">None</option>
+                            <option value="Birthday">Birthday</option>
+                            <option value="Anniversary">Anniversary</option>
+                            <option value="Gift">Gift / Event</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold mb-1">Name/Text Writing on Chocolate</label>
+                        <input type="text" id="customText" placeholder="e.g. Happy Birthday" class="w-full p-2 border rounded text-sm">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Details Input -->
+            <div class="border-t pt-3">
+                <h4 class="font-bold text-chocoGold text-sm mb-2">💳 Payment Verification</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold mb-1">Gateway</label>
+                        <select id="paymentGateway" class="w-full p-2 border rounded text-sm">
+                            <option value="bKash">bKash</option>
+                            <option value="Nagad">Nagad</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold mb-1">Sender Mobile No *</label>
+                        <input type="tel" id="senderNo" required placeholder="017XXXXXXXX" class="w-full p-2 border rounded text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold mb-1">TrxID *</label>
+                        <input type="text" id="trxId" required placeholder="9A7BXXXX" class="w-full p-2 border rounded text-sm">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing Summary -->
+            <div class="bg-chocoCream p-3 rounded-lg font-semibold space-y-1 text-xs md:text-sm border border-chocoGold/40 mt-3">
+                <div class="flex justify-between"><span>Advance Delivery Fee:</span><span id="deliveryFeeText" class="text-red-700 font-bold">৳80</span></div>
+                <div class="flex justify-between"><span>Cash on Delivery (Chocolate Price):</span><span id="codBalanceText" class="text-green-800 font-bold">৳0</span></div>
+            </div>
+
+            <button type="submit" class="w-full bg-chocoDark text-chocoGold font-bold py-3 rounded-lg hover:bg-chocoGold hover:text-chocoDark transition duration-300">
+                Confirm Order via WhatsApp
+            </button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-chocoDark text-gray-300 text-center py-6 text-xs space-y-2">
+        <p>Choco Whimsy By Lamiya &copy; 2026. All Rights Reserved.</p>
+        <p><a href="https://www.facebook.com/profile.php?id=61588324855620" target="_blank" class="text-chocoGold hover:underline"><i class="fab fa-facebook"></i> Visit Facebook Page</a></p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
