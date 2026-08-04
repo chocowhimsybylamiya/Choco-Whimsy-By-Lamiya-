@@ -439,3 +439,82 @@ Luxury Handmade Chocolate Crafted With Love 🍫
 </div>
 
 </section>
+  <!-- ORDER SECTION -->
+
+<section id="order" class="order-section">
+
+<h1>🍫 Place Your Order</h1>
+
+<p>
+Choose your favourite chocolate and order now 💝
+</p>
+
+
+<div class="order-box">
+
+<h2>Choco Whimsy By Lamiya</h2>
+
+<label>Your Name</label>
+<input type="text" id="name" placeholder="Enter your name">
+
+
+<label>Phone Number</label>
+<input type="text" id="phone" placeholder="Enter your phone number">
+
+
+<label>Chocolate Name</label>
+<input type="text" id="product" placeholder="Which chocolate you want?">
+
+
+<label>Quantity</label>
+<input type="number" id="quantity" placeholder="Quantity">
+
+
+<label>Delivery Address</label>
+<textarea id="address" placeholder="Enter your address"></textarea>
+
+
+<button onclick="sendOrder()">
+Confirm Order 🍫
+</button>
+
+
+</div>
+
+</section>
+
+
+
+<script>
+
+function sendOrder(){
+
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+let product = document.getElementById("product").value;
+let quantity = document.getElementById("quantity").value;
+let address = document.getElementById("address").value;
+
+
+// এখানে তোমার WhatsApp নাম্বার বসাতে হবে
+
+let number = "YOUR_WHATSAPP_NUMBER";
+
+
+let message =
+"🍫 New Chocolate Order%0A%0A" +
+"Name: " + name + "%0A" +
+"Phone: " + phone + "%0A" +
+"Product: " + product + "%0A" +
+"Quantity: " + quantity + "%0A" +
+"Address: " + address;
+
+
+window.open(
+"https://wa.me/" + number + "?text=" + message,
+"_blank"
+);
+
+}
+
+</script>
