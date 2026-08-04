@@ -24,6 +24,26 @@
 
 
 <section class="hero">
+
+<img src="images/logo.png" class="logo-img" alt="Choco Whimsy By Lamiya">
+
+
+<h1>Choco Whimsy By Lamiya</h1>
+
+<p>
+Premium Handmade Chocolate 🍫<br>
+Made with Love & Creativity
+</p>
+
+
+<a href="#menu">
+<button>
+Explore Chocolates
+</button>
+</a>
+
+
+</section>
     <h1>Premium Handmade Chocolate</h1>
     <p>Choco Whimsy By Lamiya থেকে চকলেট অর্ডার করে খাওয়া প্রয়োজন 🍫</p>
     <button>Order Now</button>
