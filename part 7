@@ -56,3 +56,42 @@ document.getElementById("total").innerHTML =
 }
 
 </script>
+<button type="button" onclick="sendOrder()">
+Send Order to Facebook
+</button>
+<script>
+
+function sendOrder(){
+
+let product = document.getElementById("product").value;
+let quantity = document.getElementById("quantity").value;
+let delivery = document.getElementById("delivery").value;
+let name = document.querySelector('input[placeholder="Your Name"]').value;
+let phone = document.querySelector('input[placeholder="Phone Number"]').value;
+let address = document.querySelector('textarea').value;
+
+
+let message = 
+"🍫 Choco Whimsy By Lamiya Order\n\n" +
+"Product: " + product +
+"\nQuantity: " + quantity +
+"\nDelivery: " + delivery +
+"\nName: " + name +
+"\nPhone: " + phone +
+"\nAddress: " + address;
+
+
+navigator.clipboard.writeText(message);
+
+
+alert("Order details copied! এখন Facebook Page এ গিয়ে Message করুন।");
+
+
+window.open(
+"https://facebook.com/yourpage",
+"_blank"
+);
+
+}
+
+</script>
