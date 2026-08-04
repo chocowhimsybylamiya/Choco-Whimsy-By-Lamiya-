@@ -293,7 +293,7 @@ nav a{
     transform:translateY(-8px);
 
 }
-/* PART 10 MENU CSS */
+ 
 
 .menu-section{
     padding:60px 20px;
@@ -409,5 +409,118 @@ nav a{
 .menu-card img{
     height:200px;
 }
+
+}
+/* PART 11 FOOTER */
+
+
+.brand-footer{
+
+background:linear-gradient(135deg,#3b0a0a,#5a1a1a);
+
+color:white;
+
+text-align:center;
+
+padding:40px 20px;
+
+}
+
+
+.brand-footer h2{
+
+font-size:30px;
+
+margin-bottom:10px;
+
+}
+
+
+.brand-footer p{
+
+font-size:16px;
+
+opacity:0.9;
+
+}
+
+
+.social-links a{
+
+display:inline-block;
+
+margin:20px;
+
+padding:12px 30px;
+
+background:#b8860b;
+
+color:white;
+
+border-radius:30px;
+
+text-decoration:none;
+
+font-weight:bold;
+
+}
+
+
+
+.social-links a:hover{
+
+background:white;
+
+color:#5a1a1a;
+
+}
+
+
+
+.copyright{
+
+margin-top:20px;
+
+font-size:14px;
+
+}
+
+
+
+
+/* Floating Button */
+
+
+.floating-order{
+
+position:fixed;
+
+right:20px;
+
+bottom:20px;
+
+background:#b8860b;
+
+color:white;
+
+padding:15px 25px;
+
+border-radius:50px;
+
+text-decoration:none;
+
+font-weight:bold;
+
+box-shadow:0 5px 15px #0005;
+
+z-index:999;
+
+}
+
+
+
+.floating-order:hover{
+
+background:#5a1a1a;
 
 }
