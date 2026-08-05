@@ -579,4 +579,217 @@
             { id: 10, name: "Customized Chocolate 100g Bar", price: 250, category: "regular", img: "https://via.placeholder.com/300x200/1a1a1a/d4af37?text=Customized+100g" },
 
             // Premium - Nutty Series
-            { id: 11, name: "Nutty Chocolate Bar (100g)", price: 250, category: "p
+            { id: 11, name: "Nutty Chocolate Bar (100g)", price: 250, category: "premium", img: "https://via.placeholder.com/300x200/1a1a1a/d4af37?text=Nutty+Bar+100g" },
+            { id: 12, name: "Tablet Nutty Bar", price: 45, category: "premium", img: "https://via.placeholder.com/300x200/1a1a1a/d4af37?text=Tablet+Nutty" },
+            { id: 13, name: "Treat Nutty Bar", price: 55, category: "premium", img: "https://via.placeholder.com/300x200/1a1a1a/d4af37?text=Treat+Nutty" },
+
+            // Premium - Marble Series
+            { id: 14, name: "Marble Chocolate Bar (100g)", price: 210, category: "premium", img: "https://via.placeholder.com/300x200/1a1a1a/d4af37?text=Marble+Bar+100g" },
+            { id: 15, name: "Tablet Marble Bar", price: 40, category: "premium", img: "https://via.placeholder.com/300x200/1a1a1a/d4af37?text=Tablet+Marble" },
+            { id: 16, name: "Treat Marble Bar", price: 50, category: "premium", img: "https://via.placeholder.com/300x200/1a1a1a/d4af37?text=Treat+Marble" },
+
+            // Premium - Crashed Cookies Series
+            { id: 17, name: "Crashed Cookies Bar (100g)", price: 210, category: "premium", img: "https://via.placeholder.com/300x200/1a1a1a/d4af37?text=Cookies+Bar+100g" },
+            { id: 18, name: "Tablet Cookies Bar", price: 45, category: "premium", img: "https://via.placeholder.com/300x200/1a1a1a/d4af37?text=Tablet+Cookies" },
+            { id: 19, name: "Treat Cookies Bar", price: 55, category: "premium", img: "https://via.placeholder.com/300x200/1a1a1a/d4af37?text=Treat+Cookies" },
+
+            // Premium - Crashed Peanut Series
+            { id: 20, name: "Crashed Peanut Bar (100g)", price: 220, category: "premium", img: "https://via.placeholder.com/300x200/1a1a1a/d4af37?text=Peanut+Bar+100g" },
+            { id: 21, name: "Tablet Crashed Peanut Bar", price: 45, category: "premium", img: "https://via.placeholder.com/300x200/1a1a1a/d4af37?text=Tablet+Peanut" },
+            { id: 22, name: "Treat Crashed Peanut Bar", price: 55, category: "premium", img: "https://via.placeholder.com/300x200/1a1a1a/d4af37?text=Treat+Peanut" },
+
+            // Premium - Crunchy Bite Series
+            { id: 23, name: "Crunchy Bite Bar (100g)", price: 215, category: "premium", img: "https://via.placeholder.com/300x200/1a1a1a/d4af37?text=Crunchy+Bar+100g" },
+            { id: 24, name: "Tablet Crunchy Bite Bar", price: 45, category: "premium", img: "https://via.placeholder.com/300x200/1a1a1a/d4af37?text=Tablet+Crunchy" },
+            { id: 25, name: "Treat Crunchy Bite Bar", price: 55, category: "premium", img: "https://via.placeholder.com/300x200/1a1a1a/d4af37?text=Treat+Crunchy" },
+
+            // Premium - Mini Delights
+            { id: 26, name: "Mini Marvelous Popping Candy (Min 5pcs)", price: 12, category: "premium", img: "https://via.placeholder.com/300x200/1a1a1a/d4af37?text=Popping+Candy" },
+            { id: 27, name: "KitKat (Min 5pcs)", price: 10, category: "premium", img: "https://via.placeholder.com/300x200/1a1a1a/d4af37?text=KitKat" },
+            { id: 28, name: "French Mendiants", price: 30, category: "premium", img: "https://via.placeholder.com/300x200/1a1a1a/d4af37?text=French+Mendiants" }
+        ];
+
+        let cart = [];
+
+        // Display Products
+        function renderProducts(items) {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+            items.forEach(prod => {
+                grid.innerHTML += `
+                    <div class="product-card">
+                        <!-- Image Placeholder -->
+                        <img src="${prod.img}" alt="${prod.name}" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-title">${prod.name}</h3>
+                            <p class="product-price">৳${prod.price}</p>
+                            <div class="product-actions">
+                                <button class="btn btn-sm" onclick="addToCart(${prod.id})">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // Filter Products
+        function filterProducts(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if(category === 'all') {
+                renderProducts(products);
+            } else {
+                const filtered = products.filter(p => p.category === category);
+                renderProducts(filtered);
+            }
+        }
+
+        // Cart Operations
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const exist = cart.find(item => item.id === id);
+
+            if(exist) {
+                exist.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+            updateCartUI();
+            toggleCart(true);
+        }
+
+        function updateCartUI() {
+            const cartContainer = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cart-total');
+
+            cartContainer.innerHTML = '';
+            let total = 0;
+            let count = 0;
+
+            cart.forEach(item => {
+                total += item.price * item.qty;
+                count += item.qty;
+                cartContainer.innerHTML += `
+                    <div class="cart-item">
+                        <div>
+                            <h4>${item.name}</h4>
+                            <p>৳${item.price} x ${item.qty}</p>
+                        </div>
+                        <div>
+                            <button onclick="changeQty(${item.id}, 1)">+</button>
+                            <button onclick="changeQty(${item.id}, -1)">-</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            cartCount.innerText = count;
+            cartTotal.innerText = total;
+        }
+
+        function changeQty(id, delta) {
+            const item = cart.find(p => p.id === id);
+            if(item) {
+                item.qty += delta;
+                if(item.qty <= 0) {
+                    cart = cart.filter(p => p.id !== id);
+                }
+            }
+            updateCartUI();
+        }
+
+        function toggleCart(forceOpen = false) {
+            const drawer = document.getElementById('cart-drawer');
+            if(forceOpen) {
+                drawer.classList.add('open');
+            } else {
+                drawer.classList.toggle('open');
+            }
+        }
+
+        // Modal Handlers
+        function openOrderModal() {
+            if(cart.length === 0) {
+                alert("আপনার কার্ট খালি!");
+                return;
+            }
+            document.getElementById('orderModal').style.display = 'flex';
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+
+        // Order Submit via WhatsApp
+        function submitOrder() {
+            const name = document.getElementById('cust_name').value;
+            const phone = document.getElementById('cust_phone').value;
+            const address = document.getElementById('cust_address').value;
+            const deliveryCharge = document.getElementById('cust_delivery').value;
+            const paymentMethod = document.getElementById('cust_payment').value;
+            const trx = document.getElementById('cust_trx').value;
+
+            if(!name || !phone || !address || !trx) {
+                alert("সবগুলো ফিল্ড সঠিকভাবে পূরণ করুন!");
+                return;
+            }
+
+            let cartSummary = "🍫 *New Order - Choco Whimsy By Lamiya*\n\n";
+            let totalProductCost = 0;
+
+            cart.forEach(item => {
+                cartSummary += `• ${item.name} - ${item.qty} pcs x ৳${item.price} = ৳${item.price * item.qty}\n`;
+                totalProductCost += item.price * item.qty;
+            });
+
+            const grandTotal = totalProductCost + parseInt(deliveryCharge);
+
+            cartSummary += `\n*Product Total:* ৳${totalProductCost}`;
+            cartSummary += `\n*Delivery Charge (Advance):* ৳${deliveryCharge}`;
+            cartSummary += `\n*Grand Total:* ৳${grandTotal}\n`;
+
+            cartSummary += `\n👤 *Customer Details:*`;
+            cartSummary += `\nName: ${name}`;
+            cartSummary += `\nPhone: ${phone}`;
+            cartSummary += `\nAddress: ${address}`;
+            cartSummary += `\nPayment Method: ${paymentMethod}`;
+            cartSummary += `\nAdvance TrxID/Number: ${trx}`;
+
+            const encodedMsg = encodeURIComponent(cartSummary);
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodedMsg}`, '_blank');
+            
+            cart = [];
+            updateCartUI();
+            closeOrderModal();
+            toggleCart();
+        }
+
+        // Custom Chocolate WhatsApp Direct Send
+        function sendCustomWhatsApp() {
+            const occasion = document.getElementById('c_occasion').value;
+            const name = document.getElementById('c_name').value;
+            const design = document.getElementById('c_design').value;
+            const note = document.getElementById('c_note').value;
+
+            if(!name) {
+                alert("চকলেটের ওপরের নামটি লিখুন!");
+                return;
+            }
+
+            let msg = `✨ *Customized Chocolate Order Inquiry*\n\n`;
+            msg += `🎀 *Occasion:* ${occasion}\n`;
+            msg += `🏷️ *Name on Chocolate:* ${name}\n`;
+            msg += `🎨 *Design Note:* ${design || 'N/A'}\n`;
+            msg += `📝 *Special Note:* ${note || 'N/A'}\n`;
+
+            const encodedMsg = encodeURIComponent(msg);
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodedMsg}`, '_blank');
+        }
+
+        // Initial Load
+        renderProducts(products);
+    </script>
+</body>
+</html>
